@@ -1,0 +1,575 @@
+/* OLAS-PERU */
+
+/* --FUENTES-- */
+
+@font-face {
+	font-family: BullettoKilla;
+	src: url("../fuentes/BullettoKilla.ttf");
+}
+
+@font-face {
+	font-family: BenchNineBold;
+	src: url("../fuentes/BenchNineBold.otf");
+}
+
+@font-face {
+	font-family: CaviarDreams;
+	src: url("../fuentes/CaviarDreams.ttf");
+}
+
+@font-face {
+	font-family: CaviarDreamsBold;
+	src: url("../fuentes/CaviarDreamsBold.ttf");
+}
+
+@font-face {
+	font-family: RobotoThin;
+	src: url("../fuentes/RobotoThin.ttf");
+}
+
+@font-face {
+	font-family: RobotoThinItalic;
+	src: url("../fuentes/RobotoThinItalic.ttf");
+}
+
+@font-face {
+	font-family: CaviarDreamsBoldItalic;
+	src: url("../fuentes/CaviarDreamsBoldItalic.ttf");
+}
+
+@font-face {
+	font-family: CaviarDreamsItalic;
+	src: url("../fuentes/CaviarDreamsItalic.ttf");
+}
+
+$screen-tablet: 1024px;
+$screen-phone: 320px;
+
+/*------*/
+
+html, body {
+	width: 100%;
+	min-height: 100%;	
+	margin: 0;
+}
+
+/* HEADER */
+
+.portada {
+	position: relative;
+	width: 100%;
+	height: 667px;
+	.btn-group {
+		position: fixed;
+		z-index: 2;
+		left: 12px;
+		top: 12px;
+	}
+
+	/*Hoooo*/
+	// generic transform
+	@mixin transform($transforms) {
+        -moz-transform: $transforms;
+        -o-transform: $transforms;
+        -ms-transform: $transforms;
+        -webkit-transform: $transforms;
+    	transform: $transforms;
+	}
+	// keyframes mixin
+	@mixin keyframes($name) {
+  		@-webkit-keyframes #{$name} {
+    		@content; 
+  		}
+  		@-moz-keyframes #{$name} {
+    		@content;
+  		}
+  		@-ms-keyframes #{$name} {
+    		@content;
+  		}
+  		@keyframes #{$name} {
+    		@content;
+  		} 
+	}
+	
+	@include keyframes(bounce) {
+  		0%, 20%, 50%, 80%, 100% {
+    		@include transform(translateY(0));
+  		}
+  		40% {
+   			 @include transform(translateY(-30px));
+  		}
+  		60% {
+    		@include transform(translateY(-15px));
+  		}
+	}
+
+	.arrow {
+  		position: relative;
+  		bottom: 0;
+  		left: 50%;
+  		padding-top: 2%;
+  		margin-left:-20px;
+  		width: 40px;
+  		height: 40px;
+ 		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOTMuNzUxLDQ1NS44NjhjLTIwLjE4MSwyMC4xNzktNTMuMTY1LDE5LjkxMy03My42NzMtMC41OTVsMCwwYy0yMC41MDgtMjAuNTA4LTIwLjc3My01My40OTMtMC41OTQtNzMuNjcyICBsMTg5Ljk5OS0xOTBjMjAuMTc4LTIwLjE3OCw1My4xNjQtMTkuOTEzLDczLjY3MiwwLjU5NWwwLDBjMjAuNTA4LDIwLjUwOSwyMC43NzIsNTMuNDkyLDAuNTk1LDczLjY3MUwyOTMuNzUxLDQ1NS44Njh6Ii8+DQo8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMjIwLjI0OSw0NTUuODY4YzIwLjE4LDIwLjE3OSw1My4xNjQsMTkuOTEzLDczLjY3Mi0wLjU5NWwwLDBjMjAuNTA5LTIwLjUwOCwyMC43NzQtNTMuNDkzLDAuNTk2LTczLjY3MiAgbC0xOTAtMTkwYy0yMC4xNzgtMjAuMTc4LTUzLjE2NC0xOS45MTMtNzMuNjcxLDAuNTk1bDAsMGMtMjAuNTA4LDIwLjUwOS0yMC43NzIsNTMuNDkyLTAuNTk1LDczLjY3MUwyMjAuMjQ5LDQ1NS44Njh6Ii8+DQo8L3N2Zz4=);
+  		background-size: contain;
+	}
+
+	.bounce {
+		bottom: 50px;
+  		@include animation(bounce 2s infinite);
+	}
+
+
+
+
+	.imagen {
+		width: 100%;
+		height: 100%;
+		background-image: url(../img/principal.jpg);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+	}
+	.slider-post-slanting{
+		opacity: 0;
+		transition: 1s transform cubic-bezier(.77,0,.175,1),1s opacity cubic-bezier(.23,1,.32,1);
+		transform: translateX(-100%) translateZ(0);
+		transform-style: flat;
+		transition-delay: 1s;
+
+	}
+
+	.carousel-inner{
+		.imagen1{
+			width: 100%;
+			height: 667px;
+			background-image: url(../img/banner6.jpg);
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+			@media screen and (max-width: #{$screen-tablet}) {
+    			height: 768px;
+   	 		}
+			@media screen and (max-width: #{$screen-phone}) {
+    			height: 480px;
+    		}
+		}
+		.imagen2{
+			@extend .imagen1;
+			background-image: url(../img/banner5.jpg);
+		}
+		.imagen3{
+			@extend .imagen1;
+			background-image: url(../img/banner2.jpg);
+		}
+		
+	}
+
+	.text{
+		@extend .slider-post-slanting;
+		position: absolute;
+		color: white;
+  		top: 50%;
+  		white: 50%;
+  		font-family: CaviarDreamsBold;
+  		p{
+  			font-family: CaviarDreamsItalic;
+  			font-size: 20px;
+  		}
+	}
+
+	.logoname{
+		background-image: url(../img/logo1.png);
+  		width: 215px;
+  		height: 200px;
+  		position: absolute;
+  		z-index: 1;
+  		background-repeat: no-repeat;
+  		background-position: center center;
+  		background-size: cover;
+  		@extend .slider-post-slanting;
+  		
+	}
+
+
+
+	.active {
+		.slider-post-slanting{
+			opacity: 1;
+	        -webkit-transform: translateX(0) translateZ(0);
+	  		transform: translateX(0) translateZ(0);
+	        -webkit-transition-delay: 0s;
+	  		transition-delay: 0s;
+		}
+		.logoname {
+			opacity: 1;
+			left: 3%;
+			-webkit-transform: translateX(0) translateZ(0);
+	  		transform: translateX(0) translateZ(0);
+	        -webkit-transition-delay: 0s;
+	  		transition-delay: 0s;
+	  		@media screen and (max-width: #{$screen-phone}){
+  				left: 17%;
+  			}
+		}
+		.text {
+			opacity: 1;
+			left: 5%;
+			-webkit-transform: translateX(0) translateZ(0);
+	  		transform: translateX(0) translateZ(0);
+	        -webkit-transition-delay: 0s;
+	  		transition-delay: 0s;
+		}
+	}
+	@media screen and (max-width: #{$screen-tablet}) {
+    	height: 768px;
+    }
+	@media screen and (max-width: #{$screen-phone}) {
+    	height: 480px;
+    }
+
+}
+
+.scrol {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* HEADER */
+
+
+
+
+/* SECCIONES */
+
+.fullpage {
+	position: relative;
+	width: 100%;
+	height: 100%;
+    .title-section {
+    	text-align: center;
+    	height: 667px;
+    	position: relative;
+    	padding: 296px 0;
+    	@media screen and (max-width: #{$screen-tablet}) {
+     		height: 768px;
+     		padding: 345px 0;
+     		width: 100%;
+     		display:block;
+    	}
+		@media screen and (max-width: #{$screen-phone}) {
+     		height: 480px;
+     		padding: 201px 0;
+     		width: 100%;
+     		display:block;
+    	}
+    	.title {
+    		font-family: CaviarDreamsBold;
+    		font-size: 60px;
+    		color: white;
+    	}
+    }
+    .descrip-section {
+    	height: 667px;
+    	position: relative;
+    	color: black;
+    	font-family: CaviarDreamsBold;
+    	@media screen and (max-width: #{$screen-tablet}) {
+     		height: 768px;
+     		width: 100%;
+     		display:inline-block;
+     		left: 0;
+    	}
+		@media screen and (max-width: #{$screen-phone}) {
+     		height: 480px;
+     		width: 100%;
+     		display:inline-block;
+     		left: 0;
+    	}
+    }
+}
+
+#about {
+	width: 100%;
+	height: 667px;
+	@media screen and (max-width: #{$screen-tablet}) {
+     	height: 100%;
+    }
+	@media screen and (max-width: #{$screen-phone}) {
+     	height: 100%;
+    }
+	.title-section{
+		background-image: url(../img/gridskill.jpg);
+  		background-repeat: no-repeat;
+  		background-position: center center;
+  		background-size: cover;
+		padding: 0;
+		.back-color{
+			width: 100%;
+  			height: 100%;
+  			background-color: rgba(23, 193, 161, 1);
+		}
+		.back-color:hover{
+			background-color: rgba(23, 193, 161, 0.42);
+		}
+		.title{
+			padding: 294px 0;
+			@media screen and (max-width: #{$screen-tablet}) {
+     		height: 768px;
+     			padding: 345px 0;
+    		}
+			@media screen and (max-width: #{$screen-phone}) {
+     			padding: 201px 0;
+     		}
+		}
+
+	}
+	.descrip-section {
+		background-color: white;
+		position: relative;
+		padding: 20px 43px;
+		padding-top: 50px;
+		.profile {
+			position: absolute;
+  			right: 91%;
+  			width: 125px;
+  			top: 25px;
+		}
+		.descrip-title{
+			background-image: url(../img/logo2.png);
+  			width: 280px;
+  			height: 140px;
+  			margin: 0 auto;
+  			background-repeat: no-repeat;
+  			background-size: cover;
+  			@media screen and (max-width: #{$screen-tablet}){
+  				width: 320px;
+  				height: 180px;
+  			}
+  			@media screen and (max-width: #{$screen-phone}){
+  				width: 200px;
+  				height: 100px;
+  			}
+  			
+		}
+	}
+	.descrip-descrip{
+		font-size: 1.1em;
+		position: relative;
+  		padding: 15px 52px;
+  		@media screen and (max-width: #{$screen-tablet}){
+  			font-size: 1.5em;
+  		}
+  		@media screen and (max-width: #{$screen-phone}){
+  			font-size: 0.7em;
+  			padding: 5px 7px;
+  		}
+	}
+	.gridskill{
+		.skill{
+			width: 100%;
+			float: left;
+			padding-left: 20%;
+			@extend .descrip-descrip;
+			ul{
+				float: left;
+			}
+		}
+
+		img{
+			width: 35%;
+			position: relative;
+  			padding: 35px 45px;
+  			@media screen and (max-width: #{$screen-phone}){
+  			padding: 55px 5px;
+  			}
+		}
+	}
+}
+
+#work {
+	width: 100%;
+	height: 667px;
+	@media screen and (max-width: #{$screen-tablet}) {
+     	height: 100%;
+    }
+	@media screen and (max-width: #{$screen-phone}) {
+     	height: 100%;
+    }
+	.title-section{
+		background-color: white;
+		.title{
+			color: #2a2c44;
+		}
+	}
+	.descrip-section {
+		background-color: #2a2c44;
+		color: white;
+		font-family: CaviarDreams;
+		padding: 0;
+		.pages {
+			width: 100%;
+			height: 50%;
+			.overlay{
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.8);
+				background-color: rgba(42, 44, 68, 0.6);
+				p{
+					font-size: 35px;
+  					margin: 0;
+  					padding: 112px 0 5px 0;
+  					text-decoration: underline;
+  					@media screen and (max-width: #{$screen-tablet}){
+  						padding: 140px 0 5px 0;
+  						font-size: 30px;
+  					}
+  					@media screen and (max-width: #{$screen-phone}){
+  						padding: 80px 0 5px 0;
+  						font-size: 20px;
+  					}
+				}
+				a{	
+					color: rgba(255, 255, 255, 0.8);
+					.glyphicon-eye-open{
+						font-size: 35px;
+					}
+				}
+				
+			}
+			.overlay:hover{
+				
+				a{
+					color: white;
+				}
+				color: white;
+			}
+		}
+		.pic1{
+			background-image: url(../img/screen-olas.jpg);
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+			.overlay:hover{
+				background-color: rgba(41, 151, 231, 0.73);
+			}
+		}
+		.pic1:hover{
+			@extend .pic1;
+			background-image: url(../img/screen-olas2.jpg);
+			
+		}
+		.pic2{
+			@extend .pic1;
+			background-image: url(../img/screen-dashy.jpg);
+			.overlay:hover{
+				background-color: rgba(231, 41, 55, 0.73);
+			}
+			
+		}
+		.pic2:hover{
+			@extend .pic1;
+			background-image: url(../img/screen-dashy3.jpg);
+			
+		}
+
+	}
+}
+
+#contact {
+	width: 100%;
+	height: 667px;
+	@media screen and (max-width: #{$screen-tablet}) {
+     	height: 100%;
+    }
+	@media screen and (max-width: #{$screen-phone}) {
+     	height: 100%;
+    }
+	.title-section{
+		background-color: #f7484e;
+	}
+
+	
+
+	.descrip-section {
+		padding: 49px 86px;
+		font-family: CaviarDreams;
+		font-size: 1.2em;
+		background-color: white;
+		@media screen and (max-width: #{$screen-phone}){
+  		padding: 10px 30px;
+  		}
+		
+		h3{
+			font-weight: bold;
+			margin-bottom: 20px;
+			position: relative;
+			top: 10%;
+			@media screen and (max-width: #{$screen-phone}){
+  				top: 5%;
+  			}
+  			@media screen and (max-width: #{$screen-tablet}){
+  				font-size: 1.3em;
+  			}
+
+			
+		}
+		.frase {
+			position: relative;
+  			font-family: CaviarDreamsItalic;
+  			font-size: 0.9em;
+  			top: 45%;
+  			text-align: center;
+  			@media screen and (max-width: #{$screen-phone}){
+  				top: 5%;
+  			}
+  			@media screen and (max-width: #{$screen-tablet}){
+  				font-size: 1em;
+  			}
+		}
+		p{
+			margin-bottom: 20px;
+			position: relative;
+			top: 20%;
+			@media screen and (max-width: #{$screen-phone}){
+  				top: 5%;
+  			}
+  			@media screen and (max-width: #{$screen-tablet}){
+  				font-size: 1em;
+  			}
+		}
+		
+		.redes {
+			position: relative;
+			top: 30%;
+			text-align: center;
+			a{
+				img{
+					background-color: black;
+					width: 35px;
+					height: 35px;
+					margin-left: 10px;
+				}
+			}
+			@media screen and (max-width: #{$screen-phone}){
+  				text-align: center;
+  				top: 3%;
+  			}
+  			@media screen and (max-width: #{$screen-tablet}){
+  				font-size: 1em;
+  				text-align: center;
+  			}
+		}
+	}
+}
+
+
+
+/* SECCIONES */
+
+
