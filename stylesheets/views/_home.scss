@@ -434,17 +434,15 @@ html, body {
   						font-size: 20px;
   					}
 				}
-				a{	
+				span{	
 					color: rgba(255, 255, 255, 0.8);
-					.glyphicon-eye-open{
-						font-size: 35px;
-					}
+					font-size: 35px;
 				}
 				
 			}
 			.overlay:hover{
 				
-				a{
+				span{
 					color: white;
 				}
 				color: white;
@@ -505,7 +503,7 @@ html, body {
   		padding: 10px 30px;
   		}
 		
-		h3{
+		h2{
 			font-weight: bold;
 			margin-bottom: 20px;
 			position: relative;

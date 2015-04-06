@@ -6003,13 +6003,12 @@ html, body {
             #work .descrip-section .pages .overlay p {
               padding: 80px 0 5px 0;
               font-size: 20px; } }
-        #work .descrip-section .pages .overlay a {
-          color: rgba(255, 255, 255, 0.8); }
-          #work .descrip-section .pages .overlay a .glyphicon-eye-open {
-            font-size: 35px; }
+        #work .descrip-section .pages .overlay span {
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 35px; }
       #work .descrip-section .pages .overlay:hover {
         color: white; }
-        #work .descrip-section .pages .overlay:hover a {
+        #work .descrip-section .pages .overlay:hover span {
           color: white; }
     #work .descrip-section .pic1, #work .descrip-section .pic1:hover, #work .descrip-section .pic2, #work .descrip-section .pic2:hover {
       background-image: url(../img/screen-olas.jpg);
@@ -6046,16 +6045,16 @@ html, body {
     @media screen and (max-width: 320px) {
       #contact .descrip-section {
         padding: 10px 30px; } }
-    #contact .descrip-section h3 {
+    #contact .descrip-section h2 {
       font-weight: bold;
       margin-bottom: 20px;
       position: relative;
       top: 10%; }
       @media screen and (max-width: 320px) {
-        #contact .descrip-section h3 {
+        #contact .descrip-section h2 {
           top: 5%; } }
       @media screen and (max-width: 1024px) {
-        #contact .descrip-section h3 {
+        #contact .descrip-section h2 {
           font-size: 1.3em; } }
     #contact .descrip-section .frase {
       position: relative;
